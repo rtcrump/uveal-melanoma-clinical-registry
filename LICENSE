@@ -1,0 +1,9 @@
+Creative Commons Attribution 4.0 International
+
+The code book (codebook.csv) and the empty schema (schema.sql) are licensed under CC BY 4.0.
+
+https://creativecommons.org/licenses/by/4.0/
+
+You may share and adapt them if you credit the Uveal Melanoma Clinical Registry, Ocular Oncology Outcomes Research.
+
+This license does not cover EQ-5D-5L, VF-14, or CAHPS item wording. That wording is not in this repository. It does not cover patient data. This repository contains none.

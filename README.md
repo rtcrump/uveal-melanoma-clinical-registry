@@ -1,6 +1,6 @@
 # Uveal Melanoma Clinical Registry
 
-This repository is the field list for the clinical registry of the Alberta Ocular Brachytherapy Program. Ocular Oncology Outcomes Research keeps it. The registry itself is the clinical record for adults treated in that program; this repository is the description of that record, not the record.
+This repository is the field list for the clinical registry of the Alberta Ocular Brachytherapy Program. The lab site is [Ocular Oncology Outcomes Research](https://o3r.ca/). The registry itself is the clinical record for adults treated in that program; this repository is the description of that record, not the record.
 
 Two files carry it.
 
@@ -26,7 +26,7 @@ Name, health number, phone, email, and address columns are marked as identifiers
 
 ## Asking for patient-level data
 
-There is no patient-level file in this repository. Send a request from the registry page: https://o3r.ca/uveal-melanoma-clinical-registry/
+There is no patient-level file in this repository. A request for data goes through the lab site: [o3r.ca](https://o3r.ca/).
 
 We read the question, the ethics status, and the fields you named from this code book. A file moves only after that review and a signed data-use agreement. If there is a charge, it is a cost-recovery quote for preparing and transferring the extract, issued through the university. There is no price list in this repository.
 

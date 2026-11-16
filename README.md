@@ -2,15 +2,15 @@
 
 Version 0.1.0 (beta)
 
-This repository describes the clinical registry of the Alberta Ocular Brachytherapy Program, which holds the clinical record for adults treated in that program. It holds the structure of that record and none of the data. The registry's page is on the lab site, [Ocular Oncology Outcomes Research](https://o3r.ca/uveal-melanoma-clinical-registry/).
+This repository describes the clinical registry of the Alberta Ocular Brachytherapy Program, which holds the clinical record for adult patients treated in that program. The files in this repository provide the structure and data definitions of that registry, not any data. Further information about the registry can be found on our lab site, [Ocular Oncology Outcomes Research](https://o3r.ca/uveal-melanoma-clinical-registry/).
+
+We are sharing the registry as part of our open science ethos and to promote more cross-institutional collaboration. Clinical researchers interested in working on this project or linking data sets are encouraged to reach out. 
 
 ## Files
 
-`codebook.csv` is the data dictionary: 105 variables across 11 forms, one variable per row. Each row gives the variable's form, field type, label, codes, validation, identifier flag, and branching logic.
+`codebook.csv` is the data dictionary: 105 variables across 11 forms, one variable per row. Each row gives the variable's form, field type, label, codes, validation, identifier flag, and branching logic. The code book comes from the registry's REDCap project.
 
 `schema.sql` is an empty SQLite database with one table per form. Every table is keyed on `studyid`. REDCap stores that key only on the patient form, but we repeated it on every table so the schema works without REDCap. Coded answers are stored as text, and the codes are in the code book. A checkbox can hold more than one code.
-
-The code book comes from the registry's REDCap project. REDCap is still the system of record, so merging a pull request here changes nothing in the clinic's database; we decide what gets adopted there.
 
 ## Tables
 
@@ -84,13 +84,15 @@ erDiagram
 
 `studyid` is counted once, on `patient_information`; the copies on the other tables and the `redcap_repeat_instance` column aren't counted.
 
+Nineteen columns are flagged as identifiers: names, the health number, date of birth, contact details, the Castle ID, and the dates of imaging, GEP testing, plaque insertion, enucleation, metastasis, and death. They're empty here, and they should stay empty in any public copy.
+
 ## Using the code book in REDCap
 
 The code book isn't a [REDCap](https://projectredcap.org/) data dictionary as it stands, but it's close. To import it, rename the columns to REDCap's data dictionary headers and put them in REDCap's order, change the identifier flag to `y` (blank for non-identifiers), and drop `instrument_note`. The field types, choice codes, and branching logic already use REDCap's syntax. One validation type, `phn_any`, may not exist on your REDCap server; replace it or leave it blank.
 
 ## Using it outside Canada
 
-The registry was built for use in Canada, and three fields show it: the province list, the Canadian postal-code validation, and the provincial Personal Health Number. Those are the rows to change for another jurisdiction (e.g., a state list, a ZIP code validation, and your own health identifier).
+The registry was built for use in Canada, as you'll see in three fields: the province list, the Canadian postal-code validation, and the provincial Personal Health Number. Those are the rows to change for another jurisdiction (e.g., a state list, a ZIP code validation, and your own health identifier).
 
 ## Patient-reported outcomes
 
@@ -98,7 +100,7 @@ We also collect the VF-14, the EQ-5D-5L, and the [PROM-UM](https://o3r.ca/prom-u
 
 ## Versions
 
-We use [semantic versioning](https://semver.org/). This is 0.1.0, a beta; until 1.0.0, variable names and codes may still change between releases. From 1.0.0 on, a renamed or removed variable (or a changed code) means a new major version, a new variable or form means a minor version, and a corrected label means a patch. Changes are listed in [CHANGELOG.md](CHANGELOG.md).
+This is 0.1.0, a beta; until 1.0.0, variable names and codes may still change between releases. From 1.0.0 on, a renamed or removed variable (or a changed code) means a new major version, a new variable or form means a minor version, and a corrected label means a patch. Changes are listed in [CHANGELOG.md](CHANGELOG.md).
 
 ## Forks and proposals
 
@@ -106,13 +108,11 @@ If another centre wants to use the structure, fork the repository. If a label is
 
 Keep patient information out of issues, pull requests, and commits. That means names, health numbers, dates tied to a person, and screenshots of a chart.
 
-Nineteen columns are flagged as identifiers: names, the health number, date of birth, contact details, the Castle ID, and the dates of imaging, GEP testing, plaque insertion, enucleation, metastasis, and death. They're empty here, and they should stay empty in any public copy.
-
 ## Asking for patient-level data
 
-There is no patient-level data in this repository. Requests go through the [registry's page](https://o3r.ca/uveal-melanoma-clinical-registry/) on the lab site.
+There are no data in this repository. If you are interested in about using our lab's data, you can submit a rRequest through the [registry's page](https://o3r.ca/uveal-melanoma-clinical-registry/) on the lab site.
 
-We review the research question, its ethics status, and the fields you've chosen from this code book. Data are released only after that review and a signed data-use agreement. If there is a charge, it's a cost-recovery quote for preparing and transferring the extract, issued through the university; there's no price list.
+We review the research question, its ethics status, and the fields you've chosen from this code book. Data are released only after that review and a signed data-use agreement. There is a cost-recovery quote for preparing and transferring the data extract.
 
 ## License
 
